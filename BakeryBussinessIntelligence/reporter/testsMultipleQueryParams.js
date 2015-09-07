@@ -23,7 +23,7 @@ var sales = [new Sale(new Biscuit(), 2, 'small', 30, "1985-01-18T10:30:56", stor
 
 QUnit.module("report services tests \n with multiple query params");
 
-QUnit.test("compute the units sold, with a query containing the next params: \n product, package size, store, customer gender and age range ", function( assert ) {
+QUnit.test("computes the units sold, with a query containing the next params: \n product, package size, store, customer gender and age range ", function( assert ) {
 	//arrange
 	var query = new Query('biscuit', 'small', null, null, null, store1, 'female', new ranges.AgeRange(2,4), null);
 
@@ -34,7 +34,7 @@ QUnit.test("compute the units sold, with a query containing the next params: \n 
 	assert.equal(result.totalUnits, 0);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query containing the next params: \n product, package size, store, customer gender and age range ", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query containing the next params: \n product, package size, store, customer gender and age range ", function( assert ) {
 	//arrange
 	var query = new Query('biscuit', 'small', null, null, null, store1, 'female', new ranges.AgeRange(2,4), null);
 
@@ -42,10 +42,10 @@ QUnit.test("compute the sum of all sales prices, with a query containing the nex
 	var result = reporterService.generateReport(sales, query);
 
 	//assert
-	assert.equal(result.totalUnits, 0);
+	assert.equal(result.sumOfSales, 0);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given province and customer gender", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given province and customer gender", function( assert ) {
 	//arrange
 	var store1 = new Store(1);
 	var store2 = new Store(2);
@@ -72,7 +72,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given provinc
 	assert.equal(result.sumOfSales, 60);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given province and customer gender", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given province and customer gender", function( assert ) {
 	//arrange
 	var store1 = new Store(1);
 	var store2 = new Store(2);

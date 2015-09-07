@@ -23,7 +23,7 @@ var sales = [new Sale(new Biscuit(), 2, 'small', 30, "1985-01-18T10:30:56", stor
 
 QUnit.module("report services tests \n with one query param");
 
-QUnit.test("compute the units sold, with a query with given package size", function( assert ) {
+QUnit.test("computes the units sold, with a query with given package size", function( assert ) {
 	//arrange
 	var query = new Query(null, 'small', null, null, null, null, null, null, null);
 
@@ -34,7 +34,7 @@ QUnit.test("compute the units sold, with a query with given package size", funct
 	assert.equal(result.totalUnits, 7);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given package size", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given package size", function( assert ) {
 	//arrange
 	var query = new Query(null, 'small', null, null, null, null, null, null, null);
 
@@ -44,7 +44,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given package
 	//assert
 	assert.equal(result.sumOfSales, 220);
 });
-QUnit.test("compute the units sold, with a query with given store", function( assert ) {
+QUnit.test("computes the units sold, with a query with given store", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, store2, null, null, null);
 
@@ -55,7 +55,7 @@ QUnit.test("compute the units sold, with a query with given store", function( as
 	assert.equal(result.totalUnits, 3);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given store", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given store", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, store2, null, null, null);
 
@@ -66,7 +66,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given store",
 	assert.equal(result.sumOfSales, 110);
 });
 
-QUnit.test("compute the units sold, with a query with given customer gender", function( assert ) {
+QUnit.test("computes the units sold, with a query with given customer gender", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, 'male', null, null);
 
@@ -77,7 +77,7 @@ QUnit.test("compute the units sold, with a query with given customer gender", fu
 	assert.equal(result.totalUnits, 1);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given customer gender", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given customer gender", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, 'male', null, null);
 
@@ -88,7 +88,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given custome
 	assert.equal(result.sumOfSales, 50);
 });
 
-QUnit.test("compute the units sold, with a query with given customer age range", function( assert ) {
+QUnit.test("computes the units sold, with a query with given customer age range", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, null, new ranges.AgeRange(15,18), null);
 
@@ -99,7 +99,7 @@ QUnit.test("compute the units sold, with a query with given customer age range",
 	assert.equal(result.totalUnits, 6);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given customer age range", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given customer age range", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, null, new ranges.AgeRange(15,18), null);
 
@@ -109,7 +109,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given custome
 	//assert
 	assert.equal(result.sumOfSales, 170);
 });
-QUnit.test("compute the units sold, with a query with given sale date range", function( assert ) {
+QUnit.test("computes the units sold, with a query with given sale date range", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, null, null, new ranges.DateRange("1985-01-18T10:30:56","1986-01-18T10:30:55"));
 
@@ -120,7 +120,7 @@ QUnit.test("compute the units sold, with a query with given sale date range", fu
 	assert.equal(result.totalUnits, 5);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given sale date range", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given sale date range", function( assert ) {
 	//arrange
 	var query = new Query(null, null, null, null, null, null, null, null, new ranges.DateRange("1985-01-18T10:30:56","1986-01-18T10:30:55"));
 
@@ -130,7 +130,7 @@ QUnit.test("compute the sum of all sales prices, with a query with given sale da
 	//assert
 	assert.equal(result.sumOfSales, 120);
 });
-QUnit.test("compute the units sold, with a query with given province", function( assert ) {
+QUnit.test("computes the units sold, with a query with given province", function( assert ) {
 	//arrange
 	var store1 = new Store(1);
 	var store2 = new Store(2);
@@ -155,7 +155,7 @@ QUnit.test("compute the units sold, with a query with given province", function(
 	assert.equal(result.totalUnits, 3);
 });
 
-QUnit.test("compute the sum of all sales prices, with a query with given province", function( assert ) {
+QUnit.test("computes the sum of all sales prices, with a query with given province", function( assert ) {
 	//arrange
 	var store1 = new Store(1);
 	var store2 = new Store(2);

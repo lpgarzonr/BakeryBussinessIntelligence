@@ -38,12 +38,25 @@ QUnit.test("return a result for each input query", function( assert ) {
 });
 
 QUnit.test("throw an error where a invalid input is inserted", function( assert ) {
+  
+  //arrange
   var invalidInput = [Biscuit()];
+
+  //assert
   assert.throws(
       function() {
         appServices.computeInputs(inputs.concat(invalidInput));
       }
     );
+});
+
+QUnit.test("computes the sume of all the sales made before the query", function( assert ) {
+  //act
+  var results = appServices.computeInputs(inputs);
+  var lastReport = results[4];
+
+  //assert
+  assert.equal(lastReport.sumOfSales,180);
 });
 
 function inicializingStoreLocations(){
