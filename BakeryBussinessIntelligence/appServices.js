@@ -14,16 +14,15 @@ function computeInputs(inputs){
 			salesToReport.push(input);		
 		}else if (input instanceof Query){
 			reports.push(reporterServices.generateReport(salesToReport, input));
-			console.log(reports);
 		}
 		else {
-			console.log("You should introduce a Query or a Sale");
+			throw Error("You should introduce a Query or a Sale");
 		}
 	});
 	return reports;
 };
 
-//TODO: createa new location
+//TODO: createa new location from a given sale
 function createSaleLocation(){
 
 };

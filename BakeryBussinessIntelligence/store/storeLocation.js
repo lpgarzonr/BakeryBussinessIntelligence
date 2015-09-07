@@ -1,7 +1,8 @@
+//TODO: Generalice this places to a location witn a type value
 function Province(id){
 	this.id = id;
 	this.regions = [];
-	this.addRegion= function(region){ //TODO: Publica
+	this.addRegion= function(region){
 	    this.regions.push(region);
 	};
 };
@@ -9,7 +10,7 @@ function Province(id){
 function Region(id){
 	this.id = id;
 	this.cities = [];
-	this.addCity = function(city){ //TODO: Publica
+	this.addCity = function(city){
 	    this.cities.push(city);
 	};
 };
@@ -17,7 +18,7 @@ function Region(id){
 function City(id) {
 	this.id = id;
 	this.stores = [];
-	this.addStore = function(stor){ //TODO: Publica
+	this.addStore = function(stor){
 	    this.stores.push(stor);
 	};
 
@@ -33,7 +34,7 @@ function City(id) {
 function Store(id) {
 	this.id = id;
 	this.sales = [];
-	this.addSale = function(sale){ //TODO: Publica
+	this.addSale = function(sale){
 	    this.sales.push(sale);
 	};
 };

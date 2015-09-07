@@ -12,54 +12,65 @@ var City = storeLocation.City;
 var Region = storeLocation.Region;
 var Province = storeLocation.Province;
 
+inicializingStoreLocations();
 
-  	store1 = new Store(1);
-  	store2 = new Store(2);
-  	store3 = new Store(3);
-  	store4 = new Store(4);
-  	store5 = new Store(5);
-
-  	//create city
-  	cityBta = new City('Bogota');
-  	cityBoy = new City('Boyaca');
-  	cityCart = new City('Cartagena');
-  	cityMed = new City('MEdellin');
-	
-	// adding stores to each city
-	cityBta.addStore(store1);
-	cityBta.addStore(store2);
-	cityBoy.addStore(store3);
-	cityMed.addStore(store4);
-	cityCart.addStore(store5);
-
-  	//creating regions
-  	regCundi = new Region('Cundinamarca');
-  	regAntq = new Region('Antioquia');
-  	regBoliv = new Region('Bolivar');
-
-	regCundi.addCity(cityBta);
-	regCundi.addCity(cityBoy);
-	regAntq.addCity(cityMed);
-	regBoliv.addCity(cityCart);
-  	
-  	//crating provinces
-  	provAndina = new Province('Andina');
-  	provCosta = new Province('Costa');
-
-  	provAndina.addRegion(regCundi);
-  	provAndina.addRegion(regAntq);
-  	provCosta.addRegion(regBoliv);
-
-var inputs = [new Sale(new Biscuit(), 3, 'large', 20, "1986-01-18T10:30:55", store5, 'female', 3),
-	new Sale(new Cookie(), 2, 'small', 30, "1983-01-18T10:30:55", store1, 'female', 2),
-	new Sale(new Cookie(), 1, 'small', 50, "1985-01-18T10:30:55", store2, 'male', 2),
-	new Query('biscuit', 'large', provAndina, regBoliv, cityBta, store1, 'female', new ageRange(2,4), null),
-	new Query(null, null, null, null, null, null, 'male', null, null),
-	new Sale(new Biscuit(), 3, 'small', 20, "1985-01-18T10:30:55", store1, 'female', 2), 
-	new Sale(new Biscuit(), 1, 'large', 10, "1985-01-18T10:30:55", store2, 'female', 2),
-	new Sale(new Biscuit(), 1, 'small', 50, "2005-01-18T10:30:55", store2, 'female', 2),
-	new Query(null, 'large', provAndina, regCundi, cityBta, store1, 'female', new ageRange(1,2), new dateRange("1985-01-18T10:30:55","1986-01-18T10:30:55"))
+var inputs = [new Sale(new Biscuit(), 3, 'large', 20, "1983-01-18T10:30:55", store1, 'female', 18),
+            	new Sale(new Cookie(), 2, 'small', 30, "1985-01-18T10:30:55", store1, 'female', 25),
+            	new Sale(new Cookie(), 1, 'small', 50, "1986-01-18T10:30:55", store2, 'male', 50),
+              new Query('biscuit', 'large', provAndina, null, null, store1, 'female', new ranges.AgeRange(15,60), null),
+            	new Query('cookie', 'small', provAndina, regAntq, cityBta, store1, 'female', new ranges.AgeRange(15,60), null),
+            	new Query(null, null, null, null, null, null, 'female', null, null),
+            	new Sale(new Biscuit(), 3, 'large', 20, "2001-01-18T10:30:55", store1, 'female', 22), 
+            	new Sale(new Biscuit(), 1, 'small', 10, "2005-01-18T10:30:55", store2, 'male', 42),
+            	new Sale(new Biscuit(), 1, 'large', 50, "2015-01-18T10:30:55", store2, 'female', 29),
+              new Query(null, 'large', provAndina, regCundi, null, null, 'female', new ranges.AgeRange(20,30), new ranges.DateRange("2000-01-18T10:30:55","2015-01-18T10:30:55")),
+            	new Query(null, 'large', provAndina, regCundi, null, null, 'female', new ranges.AgeRange(20,50), new ranges.DateRange("1985-01-18T10:30:55","2006-06-18T10:30:55"))
 ];	
 
-var reportsResponses = appServices.computeInputs(inputs);
-console.log(reportsResponses);
+
+QUnit.module( "BakeryBussinessItelligence aplication tests");
+QUnit.test("return a result for each input query", function( assert ) {
+  //act
+  var result = appServices.computeInputs(inputs);
+
+  //assert
+  assert.equal(result.length,5);
+});
+
+QUnit.test("throw an error where a invalid input is inserted", function( assert ) {
+  var invalidInput = [Biscuit()];
+  assert.throws(
+      function() {
+        appServices.computeInputs(inputs.concat(invalidInput));
+      }
+    );
+});
+
+function inicializingStoreLocations(){
+  
+  //creating stores and assingning them to a city
+    store1 = new Store(1);
+    store2 = new Store(2);
+    store3 = new Store(3);
+    //create cities
+    cityBta = new City('Bogota');
+    cityBoy = new City('Boyaca');
+    cityMed = new City('Medellin');  
+    cityBta.addStore(store1);
+    cityBoy.addStore(store2);
+    cityMed.addStore(store3);
+
+    //creating and population regions
+    regCundi = new Region('Cundinamarca');
+    regAntq = new Region('Antioquia');
+
+    regCundi.addCity(cityBta);
+    regCundi.addCity(cityBoy);
+    regAntq.addCity(cityMed);
+
+    //crating and populating provinces
+    provAndina = new Province('Andina');
+    provAndina.addRegion(regCundi);
+    provAndina.addRegion(regAntq);
+    provAndina.addRegion(regAntq);
+};
