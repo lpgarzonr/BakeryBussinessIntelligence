@@ -18,7 +18,6 @@ function City(id) {
 	this.id = id;
 	this.stores = [];
 	this.addStore = function(stor){ //TODO: Publica
-		console.log('llegue');
 	    this.stores.push(stor);
 	};
 

@@ -6,6 +6,7 @@ function computeInputs(inputs){
 
 	var salesToReport = [];
 	var reports = [];
+
 	inputs.forEach(function(input){
 		if (input instanceof Sale){
 			input.product.setPrice(input.price);
@@ -20,6 +21,11 @@ function computeInputs(inputs){
 		}
 	});
 	return reports;
+};
+
+//TODO: createa new location
+function createSaleLocation(){
+
 };
 
 module.exports.computeInputs = computeInputs;
